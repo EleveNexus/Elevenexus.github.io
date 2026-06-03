@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Élevé Brief — Vol. 07</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:#0d0618;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  color:#e8e0f0;
+  min-height:100vh;
+}
+.wrapper{
+  max-width:680px;
+  margin:0 auto;
+  background:linear-gradient(160deg,#1a0a2e 0%,#120820 40%,#0d0618 100%);
+  position:relative;
+  overflow:hidden;
+}
+.wrapper::before{
+  content:'';
+  position:absolute;
+  top:-200px;left:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(155,111,212,0.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* MASTHEAD */
+.masthead{
+  padding:50px 48px 40px;
+  text-align:center;
+  border-bottom:1px solid rgba(201,168,76,0.3);
+  position:relative;
+}
+.masthead::after{
+  content:'';
+  display:block;
+  width:60px;height:2px;
+  background:linear-gradient(90deg,transparent,#C9A84C,transparent);
+  margin:20px auto 0;
+}
+.logo-img{
+  width:220px;
+  margin-bottom:18px;
+  filter:drop-shadow(0 0 12px rgba(155,111,212,0.4));
+}
+.pub-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:4px;
+  color:#C9A84C;
+  text-transform:uppercase;
+  line-height:1;
+  margin-bottom:6px;
+}
+.pub-sub{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:5px;
+  color:#9B6FD4;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.vol-date{
+  font-family:'Inter',sans-serif;
+  font-size:10px;
+  letter-spacing:3px;
+  color:rgba(212,197,232,0.6);
+  text-transform:uppercase;
+}
+
+/* LEAD */
+.lead{
+  padding:44px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  position:relative;
+}
+.kicker{
+  display:inline-block;
+  background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(155,111,212,0.2));
+  border:1px solid rgba(201,168,76,0.4);
+  color:#C9A84C;
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  padding:5px 14px;
+  border-radius:2px;
+  margin-bottom:18px;
+}
+.lead-headline{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:28px;
+  font-weight:900;
+  line-height:1.25;
+  color:#f0eaf8;
+  margin-bottom:16px;
+}
+.lead-body{
+  font-size:17px;
+  line-height:1.75;
+  color:rgba(232,224,240,0.85);
+  font-weight:300;
+}
+.lead-body strong{color:#C9A84C;font-weight:600;}
+
+/* STORY CARDS */
+.story{
+  padding:40px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  position:relative;
+}
+.story-num{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:80px;
+  font-weight:900;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(201,168,76,0.25);
+  line-height:1;
+  position:absolute;
+  top:28px;right:40px;
+  pointer-events:none;
+}
+.story-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#9B6FD4;
+  margin-bottom:10px;
+}
+.story-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:21px;
+  font-weight:700;
+  color:#f0eaf8;
+  line-height:1.3;
+  margin-bottom:14px;
+  padding-right:70px;
+}
+.story-body{
+  font-size:16px;
+  line-height:1.78;
+  color:rgba(232,224,240,0.82);
+  font-weight:300;
+}
+.story-body strong{color:#D4C5E8;font-weight:600;}
+.story-body em{color:#C9A84C;font-style:italic;}
+
+.insight-row{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+.insight-label{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#C9A84C;
+  margin-bottom:4px;
+}
+.insight-text{
+  font-size:15px;
+  line-height:1.65;
+  color:rgba(232,224,240,0.75);
+}
+
+/* STACK TABLE */
+.stack-section{
+  padding:40px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.section-label{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:#9B6FD4;
+  margin-bottom:20px;
+}
+.stack-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:20px;
+  font-weight:700;
+  color:#C9A84C;
+  margin-bottom:20px;
+}
+table{width:100%;border-collapse:collapse;}
+th{
+  background:rgba(155,111,212,0.2);
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#D4C5E8;
+  padding:10px 14px;
+  text-align:left;
+  border-bottom:1px solid rgba(201,168,76,0.3);
+}
+td{
+  padding:12px 14px;
+  font-size:14px;
+  line-height:1.55;
+  color:rgba(232,224,240,0.82);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  vertical-align:top;
+}
+tr:nth-child(even) td{background:rgba(255,255,255,0.03);}
+td:first-child{color:#C9A84C;font-weight:600;font-size:13px;}
+td:nth-child(2){color:#D4C5E8;}
+
+/* PULL QUOTE */
+.pullquote{
+  padding:44px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  border-left:3px solid #C9A84C;
+  margin:0;
+  position:relative;
+  background:rgba(201,168,76,0.04);
+}
+.pullquote::before{
+  content:'"';
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:120px;
+  color:rgba(201,168,76,0.15);
+  position:absolute;
+  top:-10px;left:36px;
+  line-height:1;
+  pointer-events:none;
+}
+.pq-text{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:22px;
+  font-style:italic;
+  line-height:1.6;
+  color:#e8e0f0;
+  padding-left:20px;
+  position:relative;
+  z-index:1;
+}
+.pq-attr{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#9B6FD4;
+  margin-top:14px;
+  padding-left:20px;
+}
+
+/* CALLOUT */
+.callout{
+  padding:40px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.callout-inner{
+  border:1px solid rgba(201,168,76,0.3);
+  padding:28px 32px;
+  position:relative;
+}
+.callout-inner::before,.callout-inner::after{
+  content:'◆';
+  color:rgba(201,168,76,0.5);
+  font-size:10px;
+  position:absolute;
+}
+.callout-inner::before{top:10px;left:10px;}
+.callout-inner::after{bottom:10px;right:10px;}
+.callout-tag{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#C9A84C;
+  margin-bottom:12px;
+}
+.callout-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:18px;
+  font-weight:700;
+  color:#f0eaf8;
+  margin-bottom:12px;
+  line-height:1.3;
+}
+.callout-body{
+  font-size:15px;
+  line-height:1.7;
+  color:rgba(232,224,240,0.8);
+}
+.callout-body strong{color:#C9A84C;}
+
+/* FOOTER */
+.footer{
+  padding:48px;
+  text-align:center;
+  background:linear-gradient(180deg,rgba(155,111,212,0.08) 0%,rgba(201,168,76,0.06) 100%);
+}
+.footer-logo{
+  width:160px;
+  margin-bottom:16px;
+  opacity:0.9;
+}
+.footer-company{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:22px;
+  font-weight:700;
+  color:#C9A84C;
+  letter-spacing:2px;
+  margin-bottom:8px;
+}
+.footer-tagline{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:15px;
+  font-style:italic;
+  color:rgba(212,197,232,0.8);
+  margin-bottom:20px;
+  line-height:1.5;
+}
+.footer-pitch{
+  border:1px solid rgba(201,168,76,0.35);
+  padding:22px 28px;
+  margin-bottom:20px;
+  text-align:left;
+}
+.footer-pitch-head{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#9B6FD4;
+  margin-bottom:8px;
+}
+.footer-pitch-body{
+  font-size:15px;
+  line-height:1.65;
+  color:rgba(232,224,240,0.82);
+}
+.footer-pitch-body strong{color:#C9A84C;}
+.footer-email{
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  letter-spacing:2px;
+  color:#C9A84C;
+  margin-top:10px;
+  display:block;
+}
+.footer-fine{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:2px;
+  color:rgba(212,197,232,0.35);
+  text-transform:uppercase;
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<!-- MASTHEAD -->
+<div class="masthead" id="s-masthead">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgODAiPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsZzEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojQzlBODRDIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOUI2RkQ0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzRGQzNDMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBvbHlnb24gcG9pbnRzPSI2MCwxMCA4MCw1MCA0MCw1MCIgZmlsbD0idXJsKCNsZzEpIiBvcGFjaXR5PSIwLjkiLz4KICA8cG9seWdvbiBwb2ludHM9IjYwLDIwIDcyLDQ1IDQ4LDQ1IiBmaWxsPSIjMWEwYTJlIiBvcGFjaXR5PSIwLjYiLz4KICA8dGV4dCB4PSI5MCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0M5QTg0QyIgbGV0dGVyLXNwYWNpbmc9IjMiPsOJTEVWw4k8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjU1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iI0Q0QzVFOCIgbGV0dGVyLXNwYWNpbmc9IjYiPk5FWFVTPC90ZXh0Pgo8L3N2Zz4=" alt="Élevé Nexus" class="logo-img"/>
+  <div class="pub-title">The Élevé Brief</div>
+  <div class="pub-sub">AI Intelligence for Founders &amp; Educators</div>
+  <div class="vol-date">Vol. 07 &nbsp;·&nbsp; Wednesday, June 3, 2026</div>
+</div>
+
+<!-- LEAD -->
+<div class="lead" id="s-lead">
+  <div class="kicker">This Week's Thesis</div>
+  <h1 class="lead-headline">We Are No Longer in the AI Hype Era. We Are in the AI Infrastructure Era.</h1>
+  <p class="lead-body">
+    Since our last issue on May 11th, the ground shifted. <strong>Anthropic just eclipsed OpenAI's valuation</strong>, 
+    a sitting President signed a sweeping AI executive order, Microsoft deployed agents that literally use your computer like a human, 
+    and Workday dropped data showing that Gen Z workers are <strong>12 times more likely than Gen X</strong> to feel completely disconnected from their colleagues 
+    because of AI workflows.<br/><br/>
+    The bubble skeptics lost their argument. The efficiency zealots may be winning the productivity war while losing the culture one. 
+    And somewhere in the middle, <em>the founders who understand system architecture — not just prompt engineering — are pulling away from the pack.</em>
+  </p>
+</div>
+
+<!-- STORY 01 — ANTHROPIC -->
+<div class="story" id="s-story-anthropic">
+  <div class="story-num">01</div>
+  <div class="story-eyebrow">Finance / Venture Capital</div>
+  <h2 class="story-title">Anthropic Just Dethroned OpenAI — And Wall Street Bankrolled the Whole Thing</h2>
+  <div class="story-body">
+    On May 28th, Anthropic closed a <strong>$65 billion Series H</strong>, pushing its post-money valuation to <strong>$965 billion</strong> — 
+    officially surpassing OpenAI as the most valuable AI company in the world. The round was led by Altimeter, Dragoneer, Greenoaks, and Sequoia, 
+    with Amazon contributing $5 billion of the total. That same week, Anthropic announced a <strong>$47 billion annualized revenue run rate</strong>, 
+    up from $10 billion last year. The driver? Enterprise adoption of Claude Code and Claude for business operations.<br/><br/>
+    As a bonus reveal, Anthropic also filed confidentially for an IPO — signaling that the AI era is no longer a startup story. 
+    It's a public markets story.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">$65B Series H at $965B valuation — surpassing OpenAI for the first time.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">At $47B revenue run rate, the "AI bubble" narrative has officially collapsed. This is a real asset class.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">Founders: enterprise AI profitability is proven. The race now is to be indispensable infrastructure — not just a clever tool.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY 02 — TRUMP EO -->
+<div class="story" id="s-story-eo">
+  <div class="story-num">02</div>
+  <div class="story-eyebrow">Policy / Regulation</div>
+  <h2 class="story-title">The White House Drew Its Line: Innovation First, Mandatory Licensing Never</h2>
+  <div class="story-body">
+    On June 2nd, President Trump signed <em>"Promoting Advanced Artificial Intelligence Innovation and Security"</em> — 
+    the most significant federal AI action of the year. The order creates a <strong>voluntary 30-day review window</strong> 
+    for frontier AI developers to give the government early access before broader release, while <strong>explicitly barring</strong> 
+    any mandatory licensing or pre-clearance requirements for AI models.<br/><br/>
+    Context matters: earlier drafts had a 90-day mandatory review. The administration walked it back after pushback from industry — 
+    choosing innovation velocity over regulatory friction. The order was directly triggered by capabilities demonstrated in 
+    Anthropic's Claude Mythos Preview, which showed unprecedented ability to identify cyber vulnerabilities.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">Voluntary framework, 30-day review window, zero mandatory licensing. Signed June 2, 2026.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">America's AI policy is clear: build fast, prosecute bad actors, don't stifle builders with red tape.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">For US founders, the regulatory window is wide open. The government is betting on innovation over control — for now.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY 03 — MICROSOFT / MCP -->
+<div class="story" id="s-story-microsoft">
+  <div class="story-num">03</div>
+  <div class="story-eyebrow">Platform / Enterprise Tech</div>
+  <h2 class="story-title">Your Software Just Became Obsolete. Microsoft Made It Official.</h2>
+  <div class="story-body">
+    In May 2026, Microsoft's Copilot Studio made <strong>computer-using agents generally available</strong> — 
+    meaning enterprises can now deploy AI agents that navigate desktops, scroll, click, and enter data across any app exactly like a human, 
+    with zero custom API integrations required. At the same time, remote <strong>Model Context Protocol (MCP)</strong> server support launched in preview, 
+    letting agents plug into private databases and enterprise tools through a single open standard — think of it as USB-C for AI.<br/><br/>
+    The downstream consequence? Enterprise buyers are aggressively rejecting traditional <strong>per-seat SaaS pricing</strong>. 
+    Why pay for 50 licenses when one agent handles the workflow? High-growth startups are pivoting entirely to 
+    <strong>outcome- or consumption-based pricing</strong> — charging per execution, per revenue generated, per problem solved.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">Computer-using agents GA in Copilot Studio. MCP becomes the enterprise standard for AI tool integration.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">The "per seat" SaaS model is dying. Background agents don't need seats. They need execution fees.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">If your SaaS product charges per user, you have 12-18 months to reprice or reposition before the market does it for you.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STACK TABLE -->
+<div class="stack-section" id="s-stack">
+  <div class="section-label">The Field Guide</div>
+  <div class="stack-title">The Mid-to-Late May Tech Stack Shift</div>
+  <table>
+    <tr>
+      <th>Old Paradigm</th>
+      <th>New Reality</th>
+      <th>The Disruptive Winner</th>
+    </tr>
+    <tr>
+      <td>Prompt Engineering</td>
+      <td>System Architecture &amp; Logic</td>
+      <td><strong>Model Context Protocol (MCP)</strong> — the open JSON standard acting as the "USB-C port" to plug any LLM safely into private databases</td>
+    </tr>
+    <tr>
+      <td>Task-Based Billing</td>
+      <td>Execution-Based Workflows</td>
+      <td><strong>Gumloop / n8n</strong> — startup teams leaving Zapier because modern node builders charge per entire multi-step execution, cutting API costs by ~60%</td>
+    </tr>
+    <tr>
+      <td>AI Assistants</td>
+      <td>Autonomous Background Operators</td>
+      <td><strong>Perplexity Computer / Google Spark</strong> — 24/7 background frameworks running on virtual machines, executing business loops while you sleep</td>
+    </tr>
+  </table>
+</div>
+
+<!-- STORY 04 — HARDWARE / CEREBRAS -->
+<div class="story" id="s-story-hardware">
+  <div class="story-num">04</div>
+  <div class="story-eyebrow">Hardware / Infrastructure</div>
+  <h2 class="story-title">The Inference Gold Rush: Cerebras IPO'd, Sticker Shock Set In, and the ASIC Era Began</h2>
+  <div class="story-body">
+    The physical side of AI had its own headline season. <strong>Cerebras Systems</strong> completed the biggest IPO of 2026 — 
+    pricing at $185 per share and opening at <strong>$350 on debut day</strong>, sending its market cap to nearly $70 billion. 
+    The inference-focused chipmaker had demand that was 20x oversubscribed. Meanwhile, <strong>Broadcom</strong> 
+    continues to dominate the custom ASIC market for enterprises building proprietary inference infrastructure outside of Nvidia's ecosystem.<br/><br/>
+    On the enterprise front: some early-adopter firms reportedly burned through their entire 2026 AI compute budgets by mid-May 
+    as major providers shifted from flat-fee subscriptions to <strong>per-use micro-billing</strong>. Token economics are now a CFO-level conversation.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">Cerebras IPO: opened at $350 (IPO price: $185). 20x oversubscribed. Biggest AI chip IPO of 2026.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">We've entered the Inference and Optimization phase. Training was yesterday's race. Running these models cheaply at scale is today's.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">Audit your AI spend NOW. Token micro-billing is real. Founders who optimize inference costs will have margin; those who don't won't.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PULLQUOTE -->
+<div class="pullquote" id="s-pullquote">
+  <p class="pq-text">You can build the most efficient automated company in the world and still lose — if your team doesn't trust each other.</p>
+  <div class="pq-attr">— The Human Signal · Workday Index, 2026</div>
+</div>
+
+<!-- STORY 05 — WORKDAY -->
+<div class="story" id="s-story-workday">
+  <div class="story-num">05</div>
+  <div class="story-eyebrow">Culture / Workplace Research</div>
+  <h2 class="story-title">AI Killed Burnout. It's Also Killing Connection. Here's the Data.</h2>
+  <div class="story-body">
+    Workday's <em>Human Connection Workplace Index</em> (May 27, 2026) surveyed 2,150 workers actively using AI across seven countries. 
+    The headline: AI is reducing burnout — but it's creating something arguably worse. <strong>One-third of workers</strong> 
+    say their weekly workplace interactions have become purely transactional. <strong>Gen Z is 12 times more likely than Gen X</strong> 
+    to report feeling completely disconnected from colleagues since adopting agentic workflows. And 37% of employees now turn to AI — 
+    not colleagues — for companionship and advice.<br/><br/>
+    Here's the part that should stop every founder cold: <strong>20% of Gen Z workers took time off this year due to loneliness or isolation.</strong> 
+    Not burnout from too much work — but disconnection from too little human contact.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">Workday Index: 33% purely transactional interactions. Gen Z 12x more isolated. 37% use AI for companionship.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">Efficiency without intentional human design isn't a win. It's a time-delayed culture collapse.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">Build your AI infrastructure AND your human checkpoints. Trust is a moat. If automation erodes it, you'll pay in attrition, not efficiency.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CALLOUT -->
+<div class="callout" id="s-callout">
+  <div class="callout-inner">
+    <div class="callout-tag">The Audit — Content Idea for Your Network</div>
+    <h3 class="callout-title">Ask your audience: Are you building an AI Studio — or a junk drawer?</h3>
+    <p class="callout-body">
+      The most dangerous AI strategy in 2026 isn't "we don't use AI." It's <strong>"we let every team member download whatever tool saves them 5 minutes."</strong> 
+      That's not transformation — that's digital hoarding.<br/><br/>
+      This weekend's challenge: audit your workflows. Are disconnected AI tools solving isolated tasks? 
+      Or do you have a centralized architecture handling entire operational loops in the background while you act as the auditor? 
+      <strong>The system integrators are winning.</strong> The prompt-prompters are not.
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER / ÉLEVÉ NEXUS PITCH -->
+<div class="footer" id="s-footer">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgODAiPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsZzEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojQzlBODRDIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOUI2RkQ0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzRGQzNDMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBvbHlnb24gcG9pbnRzPSI2MCwxMCA4MCw1MCA0MCw1MCIgZmlsbD0idXJsKCNsZzEpIiBvcGFjaXR5PSIwLjkiLz4KICA8cG9seWdvbiBwb2ludHM9IjYwLDIwIDcyLDQ1IDQ4LDQ1IiBmaWxsPSIjMWEwYTJlIiBvcGFjaXR5PSIwLjYiLz4KICA8dGV4dCB4PSI5MCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0M5QTg0QyIgbGV0dGVyLXNwYWNpbmc9IjMiPsOJTEVWw4k8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjU1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iI0Q0QzVFOCIgbGV0dGVyLXNwYWNpbmc9IjYiPk5FWFVTPC90ZXh0Pgo8L3N2Zz4=" alt="Élevé Nexus" class="footer-logo"/>
+  <div class="footer-company">Élevé Nexus</div>
+  <div class="footer-tagline">Human-Led. AI-Fed.™</div>
+  <div class="footer-pitch">
+    <div class="footer-pitch-head">Ready to Scale?</div>
+    <p class="footer-pitch-body">
+      Your startup has the vision. We have the AI optimization expertise to turn that vision into measurable growth. 
+      <strong>Élevé Nexus</strong> specializes in agentic workflow design, intelligent automation strategy, and building the centralized AI infrastructure 
+      that separates founders who are scaling from founders who are spinning.<br/><br/>
+      Stop crowdsourcing disconnected tools. Start building a system.
+    </p>
+    <span class="footer-email">ebone@elevenexus.co</span>
+  </div>
+  <div class="footer-fine">The Élevé Brief &nbsp;·&nbsp; Vol. 07 &nbsp;·&nbsp; © 2026 Élevé Nexus &nbsp;·&nbsp; All rights reserved</div>
+</div>
+
+</div><!-- end wrapper -->
+</body>
+</html>
