@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Élevé Brief — Vol. 10</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:#0d0618;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  color:#e8e0f0;
+  min-height:100vh;
+}
+.wrapper{
+  max-width:680px;
+  margin:0 auto;
+  background:linear-gradient(160deg,#1a0a2e 0%,#120820 40%,#0d0618 100%);
+  position:relative;
+  overflow:hidden;
+}
+.wrapper::before{
+  content:'';
+  position:absolute;
+  top:-200px;left:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(155,111,212,0.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* MASTHEAD */
+.masthead{
+  padding:50px 48px 40px;
+  text-align:center;
+  border-bottom:1px solid rgba(201,168,76,0.3);
+  position:relative;
+}
+.masthead::after{
+  content:'';
+  display:block;
+  width:60px;height:2px;
+  background:linear-gradient(90deg,transparent,#C9A84C,transparent);
+  margin:20px auto 0;
+}
+.logo-img{
+  width:220px;
+  margin-bottom:18px;
+  filter:drop-shadow(0 0 12px rgba(155,111,212,0.4));
+}
+.pub-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:4px;
+  color:#C9A84C;
+  text-transform:uppercase;
+  line-height:1;
+  margin-bottom:6px;
+}
+.pub-sub{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:5px;
+  color:#9B6FD4;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.vol-date{
+  font-family:'Inter',sans-serif;
+  font-size:10px;
+  letter-spacing:3px;
+  color:rgba(212,197,232,0.6);
+  text-transform:uppercase;
+}
+
+/* LEAD */
+.lead{
+  padding:44px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  position:relative;
+}
+.kicker{
+  display:inline-block;
+  background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(155,111,212,0.2));
+  border:1px solid rgba(201,168,76,0.4);
+  color:#C9A84C;
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  padding:5px 14px;
+  border-radius:2px;
+  margin-bottom:18px;
+}
+.lead-headline{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:28px;
+  font-weight:900;
+  line-height:1.25;
+  color:#f0eaf8;
+  margin-bottom:16px;
+}
+.lead-body{
+  font-size:17px;
+  line-height:1.75;
+  color:rgba(232,224,240,0.85);
+  font-weight:300;
+}
+.lead-body strong{color:#C9A84C;font-weight:600;}
+
+/* STORY CARDS */
+.story{
+  padding:40px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  position:relative;
+}
+.story-num{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:80px;
+  font-weight:900;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(201,168,76,0.25);
+  line-height:1;
+  position:absolute;
+  top:28px;right:40px;
+  pointer-events:none;
+}
+.story-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#9B6FD4;
+  margin-bottom:10px;
+}
+.story-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:21px;
+  font-weight:700;
+  color:#f0eaf8;
+  line-height:1.3;
+  margin-bottom:14px;
+  padding-right:70px;
+}
+.story-body{
+  font-size:16px;
+  line-height:1.78;
+  color:rgba(232,224,240,0.82);
+  font-weight:300;
+}
+.story-body strong{color:#D4C5E8;font-weight:600;}
+.story-body em{color:#C9A84C;font-style:italic;}
+
+.insight-row{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+.insight-label{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#C9A84C;
+  margin-bottom:4px;
+}
+.insight-text{
+  font-size:15px;
+  line-height:1.65;
+  color:rgba(232,224,240,0.75);
+}
+
+/* STACK TABLE */
+.stack-section{
+  padding:40px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.section-label{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:#9B6FD4;
+  margin-bottom:20px;
+}
+.stack-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:20px;
+  font-weight:700;
+  color:#C9A84C;
+  margin-bottom:20px;
+}
+table{width:100%;border-collapse:collapse;}
+th{
+  background:rgba(155,111,212,0.2);
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#D4C5E8;
+  padding:10px 14px;
+  text-align:left;
+  border-bottom:1px solid rgba(201,168,76,0.3);
+}
+td{
+  padding:12px 14px;
+  font-size:14px;
+  line-height:1.55;
+  color:rgba(232,224,240,0.82);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  vertical-align:top;
+}
+tr:nth-child(even) td{background:rgba(255,255,255,0.03);}
+td:first-child{color:#C9A84C;font-weight:600;font-size:13px;}
+td:nth-child(2){color:#D4C5E8;}
+
+/* PULL QUOTE */
+.pullquote{
+  padding:44px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  border-left:3px solid #C9A84C;
+  margin:0;
+  position:relative;
+  background:rgba(201,168,76,0.04);
+}
+.pullquote::before{
+  content:'"';
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:120px;
+  color:rgba(201,168,76,0.15);
+  position:absolute;
+  top:-10px;left:36px;
+  line-height:1;
+  pointer-events:none;
+}
+.pq-text{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:22px;
+  font-style:italic;
+  line-height:1.6;
+  color:#e8e0f0;
+  padding-left:20px;
+  position:relative;
+  z-index:1;
+}
+.pq-attr{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#9B6FD4;
+  margin-top:14px;
+  padding-left:20px;
+}
+
+/* CALLOUT */
+.callout{
+  padding:40px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.callout-inner{
+  border:1px solid rgba(201,168,76,0.3);
+  padding:28px 32px;
+  position:relative;
+}
+.callout-inner::before,.callout-inner::after{
+  content:'◆';
+  color:rgba(201,168,76,0.5);
+  font-size:10px;
+  position:absolute;
+}
+.callout-inner::before{top:10px;left:10px;}
+.callout-inner::after{bottom:10px;right:10px;}
+.callout-tag{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#C9A84C;
+  margin-bottom:12px;
+}
+.callout-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:18px;
+  font-weight:700;
+  color:#f0eaf8;
+  margin-bottom:12px;
+  line-height:1.3;
+}
+.callout-body{
+  font-size:15px;
+  line-height:1.7;
+  color:rgba(232,224,240,0.8);
+}
+.callout-body strong{color:#C9A84C;}
+
+/* FOOTER */
+.footer{
+  padding:48px;
+  text-align:center;
+  background:linear-gradient(180deg,rgba(155,111,212,0.08) 0%,rgba(201,168,76,0.06) 100%);
+}
+.footer-logo{
+  width:160px;
+  margin-bottom:16px;
+  opacity:0.9;
+}
+.footer-company{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:22px;
+  font-weight:700;
+  color:#C9A84C;
+  letter-spacing:2px;
+  margin-bottom:8px;
+}
+.footer-tagline{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:15px;
+  font-style:italic;
+  color:rgba(212,197,232,0.8);
+  margin-bottom:20px;
+  line-height:1.5;
+}
+.footer-pitch{
+  border:1px solid rgba(201,168,76,0.35);
+  padding:22px 28px;
+  margin-bottom:20px;
+  text-align:left;
+}
+.footer-pitch-head{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#9B6FD4;
+  margin-bottom:8px;
+}
+.footer-pitch-body{
+  font-size:15px;
+  line-height:1.65;
+  color:rgba(232,224,240,0.82);
+}
+.footer-pitch-body strong{color:#C9A84C;}
+.footer-email{
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  letter-spacing:2px;
+  color:#C9A84C;
+  margin-top:10px;
+  display:block;
+}
+.footer-fine{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:2px;
+  color:rgba(212,197,232,0.35);
+  text-transform:uppercase;
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<!-- MASTHEAD -->
+<div class="masthead" id="s-masthead">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgODAiPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsZzEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojQzlBODRDIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOUI2RkQ0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzRGQzNDMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBvbHlnb24gcG9pbnRzPSI2MCwxMCA4MCw1MCA0MCw1MCIgZmlsbD0idXJsKCNsZzEpIiBvcGFjaXR5PSIwLjkiLz4KICA8cG9seWdvbiBwb2ludHM9IjYwLDIwIDcyLDQ1IDQ4LDQ1IiBmaWxsPSIjMWEwYTJlIiBvcGFjaXR5PSIwLjYiLz4KICA8dGV4dCB4PSI5MCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0M5QTg0QyIgbGV0dGVyLXNwYWNpbmc9IjMiPsOJTEVWw4k8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjU1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iI0Q0QzVFOCIgbGV0dGVyLXNwYWNpbmc9IjYiPk5FWFVTPC90ZXh0Pgo8L3N2Zz4=" alt="Élevé Nexus" class="logo-img"/>
+  <div class="pub-title">The Élevé Brief</div>
+  <div class="pub-sub">AI Intelligence for Founders &amp; Educators</div>
+  <div class="vol-date">Vol. 10 &nbsp;·&nbsp; Friday, July 17, 2026</div>
+</div>
+
+<!-- LEAD -->
+<div class="lead" id="s-lead">
+  <div class="kicker">This Week's Thesis</div>
+  <h1 class="lead-headline">The Chatbot Is Dead. Say Hello to the High-Stakes Operator.</h1>
+  <p class="lead-body">
+    Y'all, if you're still building companies around a human manually prompting a chatbot to get things done, 
+    I need you to hear me: <strong>you're building for a market that no longer exists.</strong> 
+    This week Intel handed its entire global operation over to autonomous agents, a London startup raised $50M 
+    just to keep those agents from going rogue, and the software "seat" — the thing every SaaS company has charged for since 2005 — 
+    quietly started dying.<br/><br/>
+    The theme of mid-July 2026 is loud and clear: <em>the money isn't in the shiny AI tool anymore. It's in the architecture underneath it.</em> 
+    The founders winning right now aren't prompt engineers. They're System Architects — the people who walk into a messy business 
+    and build the invisible pipelines that run the whole thing in the background.
+  </p>
+</div>
+
+<!-- STORY 01 — INTEL + GOOGLE CLOUD -->
+<div class="story" id="s-story-intel">
+  <div class="story-num">01</div>
+  <div class="story-eyebrow">Top Story / Enterprise AI</div>
+  <h2 class="story-title">Intel Just Handed Its Whole Company to Agents. This Is the Blueprint.</h2>
+  <div class="story-body">
+    On July 16th, <strong>Intel and Google Cloud</strong> announced a massive expansion of their partnership — 
+    and it's a masterclass in where this is all going. Intel is deploying <strong>Gemini Enterprise across its entire global operation</strong>: 
+    engineering, supply chain, marketing, and — the big one — semiconductor design itself. They're using AI to help build better AI chips.<br/><br/>
+    Here's the part that matters for you. Intel isn't buying a chatbot. Through Google Cloud's Gemini Enterprise Agent Platform, 
+    each of Intel's business units is building custom <strong>line-of-business (LOB) agents</strong> that run core processes autonomously — 
+    no human copy-pasting into a text box. This is the move from "AI pilots" to "AI in production," and it's happening at one of the biggest companies on earth.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">Intel deploys Gemini Enterprise company-wide (July 16) — custom LOB agents automating engineering, supply chain & chip design.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">The "general-purpose AI assistant" market is overcrowded and margins are collapsing. The real money is in systems integration.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">The high-margin play for founders right now: be the architect who walks into a business, fixes their data, and builds the agent pipelines. That's the AI Systems Integration Agency.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY 02 — VALARIAN -->
+<div class="story" id="s-story-valarian">
+  <div class="story-num">02</div>
+  <div class="story-eyebrow">Venture Capital / Governance</div>
+  <h2 class="story-title">A London Startup Just Raised $50M to Be the Bouncer for Your AI Agents</h2>
+  <div class="story-body">
+    Plot twist nobody's talking about enough: as everybody rushes to deploy agents, one company got funded to keep them in line. 
+    On July 13th, London-based <strong>Valarian</strong> closed a <strong>$50M Series A led by NEA</strong> (their first defense/dual-use bet in Europe), 
+    bringing total funding to $70M. What do they build? A software layer that sits <em>beneath</em> your AI systems and controls 
+    exactly how data is used, who accesses it, and what leaks out.<br/><br/>
+    Here's why this is a big deal. Every enterprise and government wants frontier AI power — but the second they plug into 
+    a US cloud, they hit a wall of data sovereignty and security fears. Valarian's <strong>workload-level governance</strong> (they call it ACRA) 
+    lets them have the intelligence without giving up control. Governance isn't a feature you bolt on later. It's architecture.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">Valarian raises $50M Series A led by NEA (July 13). Total funding now $70M. Builds sovereign governance beneath AI systems.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">As agents get real power, the money moves to whoever controls, audits, and contains them. Governance is the new moat.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">Founders: if your automated startup touches medical, financial, or e-commerce records, what guardrails stop your agents from breaking compliance? Answer that before you scale.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY 03 — SAAS SEAT COLLAPSE -->
+<div class="story" id="s-story-saas">
+  <div class="story-num">03</div>
+  <div class="story-eyebrow">Financial Realities / Monetization</div>
+  <h2 class="story-title">The "Per-Seat" Software Model Is Dying. Here's What's Replacing It.</h2>
+  <div class="story-body">
+    Listen — for twenty years, every software startup scaled the exact same way: charge a monthly fee per human user. 
+    The "seat model." But here's what's happening in July's corporate procurement cycles: because autonomous agents and 
+    background processors are shrinking headcount, <strong>companies are aggressively slashing their software seat licenses.</strong> 
+    Why pay for 50 seats when three agents do the work?<br/><br/>
+    The breakout startups of 2026 saw this coming and pivoted to <strong>outcome-based monetization</strong>. 
+    Instead of selling a $50/month dashboard, they deploy an autonomous workforce and charge a percentage of actual value delivered — 
+    per support ticket resolved, per invoice processed, per manifest optimized. You don't sell the tool. You sell the result.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">July procurement data confirms the permanent decoupling: enterprises cutting per-seat licenses as agents shrink headcount needs.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">Outcome-based pricing is the new engine. Charge for value recovered, not logins purchased.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">Building financial projections? Ban per-seat subscriptions as your default. Tie your pricing to the real hours or capital your pipelines recover for the customer.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STACK TABLE -->
+<div class="stack-section" id="s-stack">
+  <div class="section-label">The Field Guide</div>
+  <div class="stack-title">The Mid-July 2026 Founder's Operational Stack</div>
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>2026 Tech Leader</th>
+      <th>The Strategic Edge</th>
+    </tr>
+    <tr>
+      <td>Agentic Infrastructure</td>
+      <td>Google Cloud Gemini Enterprise</td>
+      <td>The newly scaled platform letting large enterprises deploy secure, custom line-of-business (LOB) execution agents</td>
+    </tr>
+    <tr>
+      <td>Workflow Coordination</td>
+      <td>Alation AIOS</td>
+      <td>Launched July 14 — an Intelligence Operating System that turns traditional data catalogs into active agent orchestration layers</td>
+    </tr>
+    <tr>
+      <td>Sovereign Governance</td>
+      <td>Valarian (ACRA)</td>
+      <td>$50M Series A led by NEA — workload-level governance software that sits beneath hyperscaler clouds and controls agent behavior</td>
+    </tr>
+    <tr>
+      <td>Regulated Vertical Automation</td>
+      <td>Taktile</td>
+      <td>$110M Series C led by Goldman Sachs Alternatives — agentic decision platform automating loan approvals, fraud triage & onboarding with full audit trails</td>
+    </tr>
+  </table>
+</div>
+
+<!-- STORY 04 — ALATION AIOS -->
+<div class="story" id="s-story-alation">
+  <div class="story-num">04</div>
+  <div class="story-eyebrow">Platform / Orchestration</div>
+  <h2 class="story-title">The Missing Piece Just Shipped: An Operating System for Your Agents</h2>
+  <div class="story-body">
+    Here's a problem nobody warned you about: when you point a bunch of agents at your company's messy data, 
+    they'll act on bad information with total confidence — and you won't get an error message, you'll get a confidently wrong decision 
+    that drives a real business outcome. On July 14th, <strong>Alation launched AIOS</strong> — an "Intelligence Operating System" — 
+    built specifically to fix this.<br/><br/>
+    Instead of bolting AI onto data infrastructure that was never built for it, AIOS puts <strong>data, context, and agents into one 
+    governed, self-improving system.</strong> It traces every agent decision back to the data that produced it, checks whether that 
+    context is still current, and enforces policy across the whole agent lifecycle. It's the coordination layer that turns 
+    a pile of disconnected agents into an actual system.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">Alation launches AIOS (July 14) — unifies data, context & agents into one governed operating system with full lineage & explainability.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">The next battleground isn't building agents — it's coordinating them so they don't confidently break things.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">Before you deploy agents on your business, ask: what's my system of record for catching a confidently wrong AI decision before it drives an action?</div>
+    </div>
+  </div>
+</div>
+
+<!-- PULLQUOTE -->
+<div class="pullquote" id="s-pullquote">
+  <p class="pq-text">Giving an employee a shiny new AI tool to copy-paste into an old workflow isn't transformation. It's an accidental factory model.</p>
+  <div class="pq-attr">— The Task Automation Trap · Vol. 10</div>
+</div>
+
+<!-- STORY 05 — THE SYSTEM ARCHITECT -->
+<div class="story" id="s-story-architect">
+  <div class="story-num">05</div>
+  <div class="story-eyebrow">For Educators / The Big Lesson</div>
+  <h2 class="story-title">Stop Teaching Prompt Engineering. The Era of the System Architect Is Here.</h2>
+  <div class="story-body">
+    Real talk for the teachers and mentors in my network. If you're still teaching students to write clever prompts, 
+    you're preparing them for a job that's already being automated. Put Intel's shift to line-of-business agents next to 
+    Alation's new orchestration layer and the picture is obvious: <strong>the winners aren't tool users. They're Process Architects.</strong><br/><br/>
+    These are founders who don't drop AI on top of old habits — they erase the legacy habits entirely and rebuild the whole 
+    operation around centralized, automated pipelines where specialized agents do the heavy lifting natively, inside the data core. 
+    Give a student a chatbot to speed up an isolated task and you've built an accidental factory. Teach them to architect the 
+    system and you've built a founder.
+    <div class="insight-row">
+      <div class="insight-label">News</div>
+      <div class="insight-text">The through-line of the week: Intel's LOB agents + Alation's AIOS = the rise of the Process Architect over the tool user.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Insight</div>
+      <div class="insight-text">A shiny AI tool over an old workflow is a digital band-aid. The breakout founders rebuild the architecture from scratch.</div>
+    </div>
+    <div class="insight-row">
+      <div class="insight-label">Takeaway</div>
+      <div class="insight-text">When grading business models, stop checking if the app looks pretty. Ask: did they redesign the system, or just automate one task inside a broken one?</div>
+    </div>
+  </div>
+</div>
+
+<!-- CALLOUT -->
+<div class="callout" id="s-callout">
+  <div class="callout-inner">
+    <div class="callout-tag">The Weekend Audit — Content Idea for Your Network</div>
+    <h3 class="callout-title">Ask your audience: Is your AI a band-aid, or a rebuild?</h3>
+    <p class="callout-body">
+      Here's the post that'll make your network stop scrolling: <strong>"Stop teaching prompt engineering. The era of the System Architect is here."</strong> 
+      Most companies are using AI as a digital band-aid over old habits — a shiny tool copy-pasted into a broken process.<br/><br/>
+      This weekend's challenge for your followers: <strong>audit your operations.</strong> Are you using AI to patch old workflows, 
+      or are you rebuilding your architecture from scratch — with background networks of specialized agents doing the heavy lifting inside your data core? 
+      The Process Architects are winning. The tool-users are treading water.
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER / ÉLEVÉ NEXUS PITCH -->
+<div class="footer" id="s-footer">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgODAiPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsZzEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojQzlBODRDIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOUI2RkQ0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzRGQzNDMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBvbHlnb24gcG9pbnRzPSI2MCwxMCA4MCw1MCA0MCw1MCIgZmlsbD0idXJsKCNsZzEpIiBvcGFjaXR5PSIwLjkiLz4KICA8cG9seWdvbiBwb2ludHM9IjYwLDIwIDcyLDQ1IDQ4LDQ1IiBmaWxsPSIjMWEwYTJlIiBvcGFjaXR5PSIwLjYiLz4KICA8dGV4dCB4PSI5MCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0M5QTg0QyIgbGV0dGVyLXNwYWNpbmc9IjMiPsOJTEVWw4k8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjU1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iI0Q0QzVFOCIgbGV0dGVyLXNwYWNpbmc9IjYiPk5FWFVTPC90ZXh0Pgo8L3N2Zz4=" alt="Élevé Nexus" class="footer-logo"/>
+  <div class="footer-company">Élevé Nexus</div>
+  <div class="footer-tagline">Human-Led. AI-Fed.™</div>
+  <div class="footer-pitch">
+    <div class="footer-pitch-head">Ready to Scale?</div>
+    <p class="footer-pitch-body">
+      Your startup has the vision. We have the AI optimization expertise to turn that vision into measurable growth. 
+      <strong>Élevé Nexus</strong> specializes in agentic workflow design, intelligent automation strategy, and building the centralized AI infrastructure 
+      that separates founders who are scaling from founders who are spinning.<br/><br/>
+      Stop crowdsourcing disconnected tools. Start building a system.
+    </p>
+    <span class="footer-email">ebone@elevenexus.co</span>
+  </div>
+  <div class="footer-fine">The Élevé Brief &nbsp;·&nbsp; Vol. 10 &nbsp;·&nbsp; © 2026 Élevé Nexus &nbsp;·&nbsp; All rights reserved</div>
+</div>
+
+</div><!-- end wrapper -->
+</body>
+</html>
